@@ -1,0 +1,15 @@
+FROM node:lts-alpine
+
+WORKDIR /home/node/app
+
+COPY package*.json .
+
+RUN npm install
+
+COPY . .
+
+RUN npm run build
+
+USER node
+
+CMD [ "node", "/home/node/app/dist/main.js" ]
