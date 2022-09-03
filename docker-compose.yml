@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  bdu-api:
+    build: ./bdu-api
+    ports:
+      - "8000:3000"
+    volumes:
+      - ".:/app"
+    depends_on:
+      - database
+    environment:
+      MYSQL_DATABASE_HOST: database
+  database:
+    build: ./database-config
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: bdudb
+      MYSQL_USER: bduuser
+      MYSQL_PASSWORD: bdupass
+    volumes:
+      - "./database-config/db-volume/mysql:/var/lib/mysql/"
+  bdu-app:
+    build: ./bdu-app
+    ports:
+      - "4200:80"
+    restart: always
