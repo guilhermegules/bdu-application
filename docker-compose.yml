@@ -21,7 +21,7 @@ services:
       MYSQL_USER: bduuser
       MYSQL_PASSWORD: bdupass
     volumes:
-      - "./database-config/db-volume/mysql:/var/lib/mysql/"
+      - "./database-config/db-volume/mysql:/var/lib/mysql"
   bdu-app:
     build: ./bdu-app
     ports:
