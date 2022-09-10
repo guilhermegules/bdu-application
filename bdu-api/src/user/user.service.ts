@@ -14,6 +14,9 @@ export class UserService {
   public async create(createUserDto: CreateUserDto) {
     const user = this.repository.create({
       name: createUserDto.name,
+      cellphone: createUserDto.cellphone,
+      cpf: createUserDto.cpf,
+      email: createUserDto.email,
     });
 
     await this.repository.insert(user);

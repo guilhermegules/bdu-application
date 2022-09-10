@@ -7,4 +7,13 @@ export class User {
 
   @Column({ length: 255 })
   public name: string;
+
+  @Column({ length: 150 })
+  public email: string;
+
+  @Column({ length: 14 })
+  public cellphone: string;
+
+  @Column({ length: 11 })
+  public cpf: string;
 }
