@@ -1,0 +1,7 @@
+CREATE TABLE account (
+	account_number VARCHAR(17) NOT NULL PRIMARY KEY,
+	balance DECIMAL(13, 2) DEFAULT 0,
+	create_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	user_id VARCHAR(36) NOT NULL,
+	CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES user(user_id) 
+);
