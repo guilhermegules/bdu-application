@@ -1,0 +1,1 @@
+INSERT INTO bdudb.`transaction` (transaction_id, amount, `type`) VALUES ('952c5294-0d6c-4d68-bc87-2cbb58ba5fbc', 200.00, 'TED');
