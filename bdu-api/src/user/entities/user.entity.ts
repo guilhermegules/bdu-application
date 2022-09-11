@@ -2,7 +2,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class User {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn('uuid', { name: 'user_id' })
   public id: string;
 
   @Column({ length: 255 })
@@ -16,4 +16,7 @@ export class User {
 
   @Column({ length: 11 })
   public cpf: string;
+
+  @Column({ length: 32 })
+  public password: string;
 }

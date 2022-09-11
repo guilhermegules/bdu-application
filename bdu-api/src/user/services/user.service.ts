@@ -1,8 +1,9 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { getDataSourceToken, InjectRepository } from '@nestjs/typeorm';
 import { DataSource, Repository } from 'typeorm';
-import { CreateUserDto } from './dto/create-user.dto';
-import { User } from './entities/user.entity';
+
+import { CreateUserDto } from '../dto/create-user.dto';
+import { User } from '../entities/user.entity';
 
 @Injectable()
 export class UserService {
@@ -17,6 +18,7 @@ export class UserService {
       cellphone: createUserDto.cellphone,
       cpf: createUserDto.cpf,
       email: createUserDto.email,
+      password: createUserDto.password,
     });
 
     await this.repository.insert(user);
@@ -30,5 +32,9 @@ export class UserService {
 
   findOne(id: string) {
     return this.repository.findOneBy({ id });
+  }
+
+  findOneByEmail(email: string) {
+    return this.repository.findOneBy({ email });
   }
 }
