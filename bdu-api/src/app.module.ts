@@ -9,6 +9,9 @@ import { BankAccount } from './bank-account/entities/bank-account.entity';
 import { User } from './user/entities/user.entity';
 import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 import { BankAccountModule } from './bank-account/bank-account.module';
+import { TransactionModule } from './transaction/transaction.module';
+import { TransactionAggregation } from './transaction/entities/transaction-aggregation.entity';
+import { Transaction } from './transaction/entities/transaction.entity';
 
 @Module({
   imports: [
@@ -20,12 +23,13 @@ import { BankAccountModule } from './bank-account/bank-account.module';
       username: process.env.MYSQL_DATABASE_USER || 'root',
       password: process.env.MYSQL_DATABASE_PASSWORD || 'root',
       database: process.env.MYSQL_DATABASE_NAME,
-      entities: [User, BankAccount],
+      entities: [User, BankAccount, Transaction, TransactionAggregation],
       synchronize: true,
     }),
     UserModule,
     AuthModule,
     BankAccountModule,
+    TransactionModule,
   ],
   controllers: [],
   providers: [

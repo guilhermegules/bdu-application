@@ -1,3 +1,4 @@
+import { UpdateBankAccountDto } from './../dto/update-bank-account.dto';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -19,6 +20,17 @@ export class BankAccountService {
     });
 
     await this.repository.insert(bankAccount);
+
+    return bankAccount;
+  }
+
+  async update(updateBankAccountDto: UpdateBankAccountDto) {
+    const bankAccount = await this.repository.update(
+      { accountNumber: updateBankAccountDto.accountNumber },
+      {
+        balance: updateBankAccountDto.balance,
+      },
+    );
 
     return bankAccount;
   }
