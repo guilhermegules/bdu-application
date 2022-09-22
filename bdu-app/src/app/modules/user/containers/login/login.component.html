@@ -7,10 +7,19 @@
         <mat-form-field appearance="fill">
           <mat-label>Email</mat-label>
           <input type="email" matInput placeholder="seu-melhor-email@gmail.com" formControlName="email" />
+          <mat-error *ngIf="formGroup.get('email')?.hasError('email') && !formGroup.get('email')?.hasError('required')">
+            Insira um e-mail válido
+          </mat-error>
+          <mat-error *ngIf="formGroup.get('email')?.hasError('required')">
+            E-mail é <strong>obrigatório</strong>
+          </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Senha</mat-label>
-          <input type="email" matInput placeholder="Digite sua senha" formControlName="password" />
+          <input type="password" matInput placeholder="Digite sua senha" formControlName="password" />
+          <mat-error *ngIf="formGroup.get('password')?.hasError('required')">
+            Senha é <strong>obrigatória</strong>
+          </mat-error>
         </mat-form-field>
       </form>
     </mat-card-content>
