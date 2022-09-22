@@ -1,46 +1,43 @@
 <section class="register">
-    <mat-card>
-      <mat-card-title>Registro</mat-card-title>
-      <mat-card-subtitle>Preencha para se cadastrar no sistema</mat-card-subtitle>
-      <mat-card-content>
-        <form [formGroup]="formGroup" class="register__card-content">
-            <mat-form-field appearance="fill">
-                <mat-label>Name</mat-label>
-                <input type="text" matInput placeholder="Digite o seu nome" formControlName="name" />
-                <mat-error *ngIf="formGroup.get('name')?.hasError('required')">
-                  Nome é <strong>obrigatório</strong>
-                </mat-error>
-              </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Email</mat-label>
-            <input type="email" matInput placeholder="seu-melhor-email@gmail.com" formControlName="email" />
-            <mat-error *ngIf="formGroup.get('email')?.hasError('email') && !formGroup.get('email')?.hasError('required')">
-              Insira um e-mail válido
-            </mat-error>
-            <mat-error *ngIf="formGroup.get('email')?.hasError('required')">
-              E-mail é <strong>obrigatório</strong>
-            </mat-error>
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Senha</mat-label>
-            <input type="password" matInput placeholder="Digite sua senha" formControlName="password" />
-            <mat-error *ngIf="formGroup.get('password')?.hasError('required')">
-              Senha é <strong>obrigatória</strong>
-            </mat-error>
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>CPF</mat-label>
-            <input type="text" matInput placeholder="000.000.000-00" formControlName="cpf" />
-            <mat-error *ngIf="formGroup.get('cpf')?.hasError('required')">
-              CPF é <strong>obrigatória</strong>
-            </mat-error>
-          </mat-form-field>
-        </form>
-      </mat-card-content>
-      <mat-card-actions class="register__card-actions">
-        <button mat-raised-button color="primary" (click)="onRegister()">Registre-se</button>
-        <button mat-raised-button (click)="redirectToLogin()">Deseja fazer login?</button>
-      </mat-card-actions>
-    </mat-card>
-  </section>
-  
+  <mat-card>
+    <mat-card-title>Registro</mat-card-title>
+    <mat-card-subtitle>Preencha para se cadastrar no sistema</mat-card-subtitle>
+    <mat-card-content>
+      <form [formGroup]="formGroup" class="register__card-content">
+        <mat-form-field appearance="fill">
+          <mat-label>Nome</mat-label>
+          <input type="text" matInput placeholder="Digite o seu nome" formControlName="name" />
+          <mat-error *ngIf="formGroup.get('name')?.hasError('required')">
+            Nome é <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput placeholder="seu-melhor-email@gmail.com" formControlName="email" />
+          <mat-error *ngIf="formGroup.get('email')?.hasError('email') && !formGroup.get('email')?.hasError('required')">
+            Insira um e-mail válido
+          </mat-error>
+          <mat-error *ngIf="formGroup.get('email')?.hasError('required')">
+            E-mail é <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Senha</mat-label>
+          <input type="password" matInput placeholder="Digite sua senha" formControlName="password" />
+          <mat-error *ngIf="formGroup.get('password')?.hasError('required')">
+            Senha é <strong>obrigatória</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>CPF</mat-label>
+          <input type="text" matInput placeholder="000.000.000-00" formControlName="cpf" />
+          <mat-error *ngIf="formGroup.get('cpf')?.hasError('required')"> CPF é <strong>obrigatória</strong> </mat-error>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions class="register__card-actions">
+      <button mat-raised-button color="primary" (click)="onRegister()">Registre-se</button>
+      <button mat-raised-button (click)="redirectToLogin()">Deseja fazer login?</button>
+    </mat-card-actions>
+  </mat-card>
+</section>
