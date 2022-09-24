@@ -12,7 +12,7 @@
           </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
-          <mat-label>Email</mat-label>
+          <mat-label>E-mail</mat-label>
           <input type="email" matInput placeholder="seu-melhor-email@gmail.com" formControlName="email" />
           <mat-error *ngIf="formGroup.get('email')?.hasError('email') && !formGroup.get('email')?.hasError('required')">
             Insira um e-mail válido
