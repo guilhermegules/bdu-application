@@ -1,19 +1,11 @@
-FROM node:lts-alpine as angular
+FROM node:lts-alpine
 
 WORKDIR /home/app
 
-COPY package*.json /home/app/
+RUN npm install -g @angular/cli
 
-RUN npm install
+COPY . /home/app
 
-COPY . .
+RUN npm install -g @angular/cli && npm install
 
-RUN npm run build
-
-FROM nginx:alpine
-
-VOLUME /var/cache/nginx
-
-COPY --from=angular /home/app/dist/bdu-app /usr/share/nginx/html/
-
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+CMD ["npm", "start"]
