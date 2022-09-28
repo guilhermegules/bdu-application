@@ -30,8 +30,21 @@
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>CPF</mat-label>
-          <input type="text" matInput placeholder="000.000.000-00" formControlName="cpf" />
-          <mat-error *ngIf="formGroup.get('cpf')?.hasError('required')"> CPF é <strong>obrigatória</strong> </mat-error>
+          <input type="text" matInput placeholder="000.000.000-00" formControlName="cpf" mask="000.000.000-00" />
+          <mat-error *ngIf="formGroup.get('cpf')?.hasError('required')"> CPF é <strong>obrigatório</strong> </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Telefone</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="(00) 00000-0000"
+            formControlName="cellphone"
+            mask="(00) 00000-0000"
+          />
+          <mat-error *ngIf="formGroup.get('cellphone')?.hasError('required')">
+            Telefone é <strong>obrigatório</strong>
+          </mat-error>
         </mat-form-field>
       </form>
     </mat-card-content>

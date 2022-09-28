@@ -28,6 +28,9 @@ export class LoginComponent {
   ) {}
 
   public onLogin() {
+    this.formGroup.markAllAsTouched();
+    if (this.formGroup.invalid) return;
+
     this.authService.login(this.formGroup.value as IUser).subscribe({
       next: login => {
         this.localStorageService.setItem({ data: login, key: 'user' });
