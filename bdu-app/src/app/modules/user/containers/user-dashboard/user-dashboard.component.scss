@@ -1,0 +1,17 @@
+.user-dashboard {
+  display: flex;
+
+  &__main-info {
+    padding: 24px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 512px) {
+  .user-dashboard {
+    flex-direction: column;
+    &__main-info {
+      width: auto;
+    }
+  }
+}

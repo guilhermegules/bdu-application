@@ -6,14 +6,24 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
+import { MatIconModule } from '@angular/material/icon';
 
+import { MainNavComponent } from '@layout/main-nav/main-nav.component';
 import { UserRoutingModule } from './user-routing.module';
 import { LoginComponent } from './containers/login/login.component';
 import { RegisterComponent } from './containers/register/register.component';
 import { UserDashboardComponent } from './containers/user-dashboard/user-dashboard.component';
+import { UserContainerComponent } from './containers/user-container/user-container.component';
+import { DashboardAsideMenuComponent } from './components/dashboard-aside-menu/dashboard-aside-menu.component';
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent, UserDashboardComponent],
+  declarations: [
+    LoginComponent,
+    RegisterComponent,
+    UserDashboardComponent,
+    UserContainerComponent,
+    DashboardAsideMenuComponent,
+  ],
   imports: [
     CommonModule,
     UserRoutingModule,
@@ -23,6 +33,8 @@ import { UserDashboardComponent } from './containers/user-dashboard/user-dashboa
     ReactiveFormsModule,
     MatSnackBarModule,
     NgxMaskModule.forRoot(),
+    MainNavComponent,
+    MatIconModule,
   ],
 })
 export class UserModule {}

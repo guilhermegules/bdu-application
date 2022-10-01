@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { CanActivate, Router, UrlTree } from '@angular/router';
 
 import { IAuth } from '@core/models/auth.model';
 import { LocalStorageService } from '@core/services/local-storage.service';
@@ -8,9 +8,9 @@ import { LocalStorageService } from '@core/services/local-storage.service';
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private localStorageService: LocalStorageService<IAuth>) {}
+  constructor(private localStorageService: LocalStorageService<IAuth>, private router: Router) {}
 
-  canActivate(): boolean {
-    return !!this.localStorageService.getItem('user');
+  canActivate(): boolean | UrlTree {
+    return !!this.localStorageService.getItem('user') || this.router.parseUrl('/');
   }
 }
