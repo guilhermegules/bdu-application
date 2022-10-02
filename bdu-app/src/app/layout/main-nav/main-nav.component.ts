@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
+import { LocalStorageService } from '@core/services/local-storage.service';
 
 @Component({
   selector: 'app-main-nav',
@@ -10,8 +11,11 @@ import { MatButtonModule } from '@angular/material/button';
   standalone: true,
   imports: [MatToolbarModule, RouterModule, MatButtonModule],
 })
-export class MainNavComponent implements OnInit {
-  constructor() {}
+export class MainNavComponent {
+  constructor(private router: Router, private localStorageService: LocalStorageService) {}
 
-  ngOnInit(): void {}
+  public onLogout() {
+    this.router.navigate(['/']);
+    this.localStorageService.removeItem('user');
+  }
 }
