@@ -1,11 +1,11 @@
 <section class="user-dashboard">
-  <app-dashboard-aside-menu></app-dashboard-aside-menu>
+  <app-dashboard-aside-menu [accountNumber]="(user$ | async)!.accountNumber"></app-dashboard-aside-menu>
 
   <div class="user-dashboard__main-info">
-    <h2>Olá! Guilherme, seja bem vindo(a)</h2>
+    <h2>Olá! {{ (user$ | async)?.name }}, seja bem vindo(a)</h2>
 
     <mat-card>
-      <mat-card-title>R$ 35.000,00</mat-card-title>
+      <mat-card-title>{{ (user$ | async)?.accountBalance | currency }}</mat-card-title>
       <mat-card-subtitle>Saldo em conta</mat-card-subtitle>
     </mat-card>
   </div>

@@ -10,3 +10,14 @@ export interface IRegisterUser {
   password: string;
   cellphone: string;
 }
+
+export interface IUserAccount {
+  id: string;
+  name: string;
+  email: string;
+  cellphone: string;
+  cpf: string;
+  password: string;
+  accountBalance: number;
+  accountNumber: string;
+}
