@@ -2,7 +2,7 @@
   "name": "bdu-app",
   "version": "0.0.0",
   "scripts": {
-    "start": "ng serve --open",
+    "start": "ng serve --open --proxy-config proxy.conf.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -19,6 +19,8 @@
     "@angular/platform-browser": "^14.1.0",
     "@angular/platform-browser-dynamic": "^14.1.0",
     "@angular/router": "^14.1.0",
+    "jwt-decode": "^3.1.2",
+    "ngx-mask": "^14.2.3",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

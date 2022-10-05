@@ -38,4 +38,8 @@ export class BankAccountService {
   findOne(accountNumber: string) {
     return this.repository.findOneBy({ accountNumber });
   }
+
+  findOneByUserId(userId: string) {
+    return this.repository.findOneBy({ userId });
+  }
 }

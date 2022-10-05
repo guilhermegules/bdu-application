@@ -1,0 +1,26 @@
+@import 'variables';
+@import '../../styles/card-styles.scss';
+
+:host {
+  .register {
+    @extend .card-container;
+
+    &__card-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__card-actions {
+      padding: 0 8px;
+    }
+  }
+
+  mat-card {
+    width: 500px;
+    padding-bottom: 24px;
+
+    @media screen and (max-width: 512px) {
+      width: auto;
+    }
+  }
+}
