@@ -1,11 +1,17 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, PrimaryColumn } from 'typeorm';
+
+import { ColumnNumericTransformer } from './../../core/transformers/column-numeric-transformer';
 
 @Entity({ name: 'account' })
 export class BankAccount {
   @PrimaryColumn({ name: 'account_number' })
   public accountNumber: string;
 
-  @Column()
+  @Column({
+    type: 'decimal',
+    default: 0,
+    transformer: new ColumnNumericTransformer(),
+  })
   public balance: number;
 
   @Column({
@@ -15,6 +21,10 @@ export class BankAccount {
   })
   public createDate: Date;
 
-  @Column({ name: 'user_id', type: 'uuid' })
+  @Column({
+    name: 'user_id',
+    type: 'uuid',
+    foreignKeyConstraintName: 'fk_user',
+  })
   public userId: string;
 }
