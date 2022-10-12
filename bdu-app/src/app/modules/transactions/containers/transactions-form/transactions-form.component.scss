@@ -1,0 +1,16 @@
+:host {
+  .transactions-form {
+    display: flex;
+
+    &__stepper {
+      width: 100%;
+    }
+
+    &__form-fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      width: 65%;
+    }
+  }
+}
