@@ -10,6 +10,7 @@ export interface ITransaction {
 export interface ICreateTransactionResponse {
   senderAccount: {
     accountNumber: string;
+    amount: number;
   };
   receiverAccount: {
     accountNumber: string;

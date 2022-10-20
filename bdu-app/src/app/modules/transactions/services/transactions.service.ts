@@ -12,6 +12,6 @@ export class TransactionsService {
   constructor(private http: HttpClient) {}
 
   public createTransaction(payload: ITransaction): Observable<ICreateTransactionResponse> {
-    return this.http.post<ICreateTransactionResponse>(`${environment.API}/transaction`, payload);
+    return this.http.post<ICreateTransactionResponse>(`${environment.BASE_URL}/transaction`, payload);
   }
 }

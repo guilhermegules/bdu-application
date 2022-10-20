@@ -14,9 +14,15 @@ import { TransactionsRoutingModule } from './transactions-routing.module';
 import { TransactionsFormComponent } from './containers/transactions-form/transactions-form.component';
 import { TransactionsContainerComponent } from './containers/transactions-container/transactions-container.component';
 import { TransactionsSideNavComponent } from './components/transactions-side-nav/transactions-side-nav.component';
+import { TransactionResultComponent } from './containers/transaction-result/transaction-result.component';
 
 @NgModule({
-  declarations: [TransactionsFormComponent, TransactionsContainerComponent, TransactionsSideNavComponent],
+  declarations: [
+    TransactionsFormComponent,
+    TransactionsContainerComponent,
+    TransactionsSideNavComponent,
+    TransactionResultComponent,
+  ],
   imports: [
     CommonModule,
     TransactionsRoutingModule,

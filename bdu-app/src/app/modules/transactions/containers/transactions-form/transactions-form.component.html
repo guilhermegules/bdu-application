@@ -3,7 +3,7 @@
 
   <mat-stepper [linear]="true" #stepper class="transactions-form__stepper">
     <mat-step label="Realize a sua transferência" [stepControl]="form" [hasError]="form.invalid">
-      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <section [formGroup]="form">
         <div class="transactions-form__form-fields">
           <mat-form-field appearance="fill">
             <mat-label>Valor da transferência</mat-label>
@@ -33,17 +33,25 @@
           </mat-form-field>
         </div>
         <div>
-          <button mat-button matStepperNext>Próximo</button>
+          <button mat-button matStepperNext type="button">Próximo</button>
         </div>
-      </form>
+      </section>
     </mat-step>
     <mat-step label="Cheque os valores antes de finalizar">
-      <form>
+      <section>
         <div>
-          <button mat-button matStepperPrevious>Voltar</button>
-          <button mat-button matStepperNext>Concluir</button>
+          <h2>Para quem você vai transferir:</h2>
+          <p>{{ form.get('transactionReceiver')!.value }}</p>
+          <h2>Quantidade transferida:</h2>
+          <p>{{ formatCurrency(form.get('amount')!.value) }}</p>
+          <h2>Tipo de transferência:</h2>
+          <p>{{ form.get('type')!.value }}</p>
         </div>
-      </form>
+        <div>
+          <button mat-button matStepperPrevious type="button">Voltar</button>
+          <button mat-button matStepperNext (click)="onSubmit()" type="button">Concluir</button>
+        </div>
+      </section>
     </mat-step>
   </mat-stepper>
 </section>

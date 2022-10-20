@@ -1,0 +1,16 @@
+<section>
+  <h1>Transação concluída com sucesso</h1>
+
+  <div>
+    <h2>Quantia transferida</h2>
+    <p>
+      {{ (transactionFormState$ | async)?.transaction?.amount }}
+    </p>
+
+    <h2>Conta beneficiária</h2>
+    <p>{{ (transactionFormState$ | async)?.receiverAccount?.accountNumber }}</p>
+
+    <h2>Saldo atual da conta</h2>
+    <p>{{ (transactionFormState$ | async)?.senderAccount?.amount }}</p>
+  </div>
+</section>
