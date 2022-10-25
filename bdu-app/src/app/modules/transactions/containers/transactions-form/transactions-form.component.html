@@ -38,12 +38,12 @@
       </section>
     </mat-step>
     <mat-step label="Cheque os valores antes de finalizar">
-      <section>
+      <section class="transactions-form__checkout">
         <div>
           <h2>Para quem você vai transferir:</h2>
           <p>{{ form.get('transactionReceiver')!.value }}</p>
           <h2>Quantidade transferida:</h2>
-          <p>{{ formatCurrency(form.get('amount')!.value) }}</p>
+          <p>{{ form.get('amount')!.value | currency }}</p>
           <h2>Tipo de transferência:</h2>
           <p>{{ form.get('type')!.value }}</p>
         </div>

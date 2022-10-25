@@ -1,16 +1,23 @@
-<section>
-  <h1>Transação concluída com sucesso</h1>
+<section class="transaction-result">
+  <header class="transaction-result__header">
+    <h1>Transação concluída com sucesso</h1>
+    <button mat-raised-button color="primary" routerLink="/dashboard">Voltar para tela inicial</button>
+  </header>
 
   <div>
     <h2>Quantia transferida</h2>
     <p>
-      {{ (transactionFormState$ | async)?.transaction?.amount }}
+      {{ (transactionFormState$ | async)?.transaction?.amount | currency }}
     </p>
 
     <h2>Conta beneficiária</h2>
     <p>{{ (transactionFormState$ | async)?.receiverAccount?.accountNumber }}</p>
 
     <h2>Saldo atual da conta</h2>
-    <p>{{ (transactionFormState$ | async)?.senderAccount?.amount }}</p>
+    <p>{{ (transactionFormState$ | async)?.senderAccount?.balance | currency }}</p>
   </div>
+
+  <button mat-raised-button color="primary" class="transaction-result__mobile-button" routerLink="/dashboard">
+    Voltar para tela inicial
+  </button>
 </section>

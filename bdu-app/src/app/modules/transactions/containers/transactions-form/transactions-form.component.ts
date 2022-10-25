@@ -2,6 +2,8 @@ import { LocalStorageService } from '@core/services/local-storage.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import jwtDecode from 'jwt-decode';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { MaskPipe } from 'ngx-mask';
 import { IAuth, IDecodedUser } from '@core/models/auth.model';
@@ -40,7 +42,8 @@ export class TransactionsFormComponent implements OnInit {
     private userService: UserService,
     private transactionService: TransactionsService,
     private trasactionFormState: TransactionsFormStateService,
-    private maskPipe: MaskPipe,
+    private snackBar: MatSnackBar,
+    private router: Router,
   ) {
     this.user = jwtDecode(this.localStorageService.getItem('user')?.access_token ?? '') as IDecodedUser;
   }
@@ -59,12 +62,17 @@ export class TransactionsFormComponent implements OnInit {
       transactionSender: this.userAccount.accountNumber,
     } as ITransaction;
 
-    this.transactionService.createTransaction(payload).subscribe(transaction => {
-      this.trasactionFormState.setCreateTransactionResponseState(transaction);
+    this.transactionService.createTransaction(payload).subscribe({
+      next: transaction => {
+        this.trasactionFormState.setCreateTransactionResponseState(transaction);
+        this.router.navigate(['transactions', 'result']);
+      },
+      error: () => {
+        this.snackBar.open('Ocorreu um erro na transação', 'Fechar', {
+          verticalPosition: 'top',
+          horizontalPosition: 'center',
+        });
+      },
     });
-  }
-
-  public formatCurrency(value: number) {
-    return this.maskPipe.transform(value, 'R$ 9999999.99', '.');
   }
 }

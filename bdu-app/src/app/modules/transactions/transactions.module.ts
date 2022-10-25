@@ -7,6 +7,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgxMaskModule } from 'ngx-mask';
 
 import { MainNavComponent } from '@layout/main-nav/main-nav.component';
@@ -35,6 +36,7 @@ import { TransactionResultComponent } from './containers/transaction-result/tran
     ReactiveFormsModule,
     NgxMaskModule.forRoot(),
     MatSelectModule,
+    MatSnackBarModule,
   ],
 })
 export class TransactionsModule {}

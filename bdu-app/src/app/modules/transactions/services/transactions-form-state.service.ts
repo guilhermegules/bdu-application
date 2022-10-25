@@ -8,8 +8,6 @@ import { ICreateTransactionResponse } from '../models/transaction.model';
 export class TransactionsFormStateService {
   private createTransactionResponseState = new ReplaySubject<ICreateTransactionResponse>(1);
 
-  constructor() {}
-
   get createTransactionResponseState$() {
     return this.createTransactionResponseState.asObservable();
   }
