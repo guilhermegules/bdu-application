@@ -1,0 +1,57 @@
+<section class="transactions-form">
+  <app-transactions-side-nav></app-transactions-side-nav>
+
+  <mat-stepper [linear]="true" #stepper class="transactions-form__stepper">
+    <mat-step label="Realize a sua transferência" [stepControl]="form" [hasError]="form.invalid">
+      <section [formGroup]="form">
+        <div class="transactions-form__form-fields">
+          <mat-form-field appearance="fill">
+            <mat-label>Valor da transferência</mat-label>
+            <input
+              matInput
+              placeholder="R$ 0,00"
+              required
+              mask="separator.2"
+              thousandSeparator="."
+              separatorLimit="99999999"
+              formControlName="amount"
+              prefix="R$"
+              [allowNegativeNumbers]="false"
+            />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Para quem você deseja transferir?</mat-label>
+            <input matInput placeholder="00000-00" [maxLength]="17" formControlName="transactionReceiver" />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Método de transferência</mat-label>
+            <mat-select formControlName="type">
+              <mat-option *ngFor="let type of transactionTypes" [value]="type.value">
+                {{ type.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <button mat-button matStepperNext type="button">Próximo</button>
+        </div>
+      </section>
+    </mat-step>
+    <mat-step label="Cheque os valores antes de finalizar">
+      <section class="transactions-form__checkout">
+        <div>
+          <h2>Para quem você vai transferir:</h2>
+          <p>{{ form.get('transactionReceiver')!.value }}</p>
+          <h2>Quantidade transferida:</h2>
+          <p>{{ form.get('amount')!.value | currency }}</p>
+          <h2>Tipo de transferência:</h2>
+          <p>{{ form.get('type')!.value }}</p>
+        </div>
+        <div>
+          <button mat-button matStepperPrevious type="button">Voltar</button>
+          <button mat-button matStepperNext (click)="onSubmit()" type="button">Concluir</button>
+        </div>
+      </section>
+    </mat-step>
+  </mat-stepper>
+</section>

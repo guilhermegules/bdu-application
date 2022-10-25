@@ -59,6 +59,7 @@ export class TransactionService {
     return {
       senderAccount: {
         accountNumber: senderAccount.accountNumber,
+        balance: senderAccount.balance,
       },
       receiverAccount: {
         accountNumber: receiverAccount.accountNumber,

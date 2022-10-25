@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { LocalStorageService } from '@core/services/local-storage.service';
 import { AuthService } from '@core/services/auth.service';
+import { IAuth } from '@core/models/auth.model';
 import { UserService } from '../../services/user.service';
 import { IRegisterUser } from '../../models/user.model';
 
@@ -28,7 +29,7 @@ export class RegisterComponent {
     private router: Router,
     private userService: UserService,
     private authService: AuthService,
-    private localStorageService: LocalStorageService,
+    private localStorageService: LocalStorageService<IAuth>,
     private snackBar: MatSnackBar,
   ) {}
 

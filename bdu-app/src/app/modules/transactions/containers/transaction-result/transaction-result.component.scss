@@ -1,0 +1,24 @@
+.transaction-result {
+  padding: 24px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+
+    @media screen and (max-width: 540px) {
+      button {
+        display: none;
+      }
+    }
+  }
+
+  &__mobile-button {
+    display: none;
+
+    @media screen and (max-width: 540px) {
+      button {
+        display: block;
+      }
+    }
+  }
+}
