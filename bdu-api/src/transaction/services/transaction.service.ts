@@ -33,6 +33,18 @@ export class TransactionService {
       this.bankAccountService.findOne(createTransactionDto.transactionReceiver),
     ]);
 
+    if (!senderAccount) {
+      throw new BusinessException(
+        `Account ${createTransactionDto.transactionSender} not found`,
+      );
+    }
+
+    if (!receiverAccount) {
+      throw new BusinessException(
+        `Account ${createTransactionDto.transactionReceiver} not found`,
+      );
+    }
+
     if (senderAccount.balance - createTransactionDto.amount < 0) {
       throw new BusinessException(
         'Sender account balance cannot be less than zero',
