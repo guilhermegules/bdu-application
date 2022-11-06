@@ -8,11 +8,12 @@ import localept from '@angular/common/locales/pt';
 import { AuthInterceptor } from '@core/interceptors/auth.interceptor';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { TransactionsHistoryComponent } from './modules/transactions-history/transactions-history.component';
 
 registerLocaleData(localept, 'pt');
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, TransactionsHistoryComponent],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, HttpClientModule],
   providers: [
     {
