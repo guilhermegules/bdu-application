@@ -1,34 +1,29 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import jwtDecode from 'jwt-decode';
+
+import { Observable, shareReplay } from 'rxjs';
 
 import { IAuth, IDecodedUser } from '@core/models/auth.model';
 import { LocalStorageService } from '@core/services/local-storage.service';
-import { UserService } from '@modules/user/services/user.service';
-import { IUserAccount } from '@modules/user/models/user.model';
-import { Observable, shareReplay, Subject, takeUntil } from 'rxjs';
+import { UserService } from '../../services/user.service';
+import { IUserAccount } from '../../models/user.model';
+import { USER_KEY } from '../../constants/local-storage.constants';
 
 @Component({
   selector: 'app-user-dashboard',
   templateUrl: './user-dashboard.component.html',
   styleUrls: ['./user-dashboard.component.scss'],
 })
-export class UserDashboardComponent implements OnInit, OnDestroy {
+export class UserDashboardComponent implements OnInit {
   public user$!: Observable<IUserAccount>;
 
   public user!: IDecodedUser;
 
-  private destroyed$ = new Subject<void>();
-
   constructor(private userService: UserService, private localStorageService: LocalStorageService<IAuth>) {
-    this.user = jwtDecode(this.localStorageService.getItem('user')?.access_token ?? '') as IDecodedUser;
+    this.user = jwtDecode(this.localStorageService.getItem(USER_KEY)?.access_token ?? '') as IDecodedUser;
   }
 
   public ngOnInit(): void {
-    this.user$ = this.userService.getUserById(this.user.sub).pipe(shareReplay(1), takeUntil(this.destroyed$));
-  }
-
-  public ngOnDestroy(): void {
-    this.destroyed$.next();
-    this.destroyed$.complete();
+    this.user$ = this.userService.getUserById(this.user.sub).pipe(shareReplay(1));
   }
 }

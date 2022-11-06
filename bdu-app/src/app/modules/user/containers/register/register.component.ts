@@ -7,6 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { LocalStorageService } from '@core/services/local-storage.service';
 import { AuthService } from '@core/services/auth.service';
 import { IAuth } from '@core/models/auth.model';
+import { USER_KEY } from '@modules/user/constants/local-storage.constants';
 import { UserService } from '../../services/user.service';
 import { IRegisterUser } from '../../models/user.model';
 
@@ -42,7 +43,7 @@ export class RegisterComponent {
       .pipe(switchMap(user => this.authService.login(user)))
       .subscribe({
         next: login => {
-          this.localStorageService.setItem({ data: login, key: 'user' });
+          this.localStorageService.setItem({ data: login, key: USER_KEY });
           this.router.navigate(['/dashboard']);
         },
         error: () => {

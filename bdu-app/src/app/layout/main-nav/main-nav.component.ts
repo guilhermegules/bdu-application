@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { Router, RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { LocalStorageService } from '@core/services/local-storage.service';
+import { USER_KEY } from '@modules/user/constants/local-storage.constants';
 
 @Component({
   selector: 'app-main-nav',
@@ -16,6 +17,6 @@ export class MainNavComponent {
 
   public onLogout() {
     this.router.navigate(['/']);
-    this.localStorageService.removeItem('user');
+    this.localStorageService.removeItem(USER_KEY);
   }
 }

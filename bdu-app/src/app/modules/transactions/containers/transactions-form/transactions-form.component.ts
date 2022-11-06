@@ -10,6 +10,7 @@ import { IAuth, IDecodedUser } from '@core/models/auth.model';
 import { UserService } from '@modules/user/services/user.service';
 import { IUserAccount } from '@modules/user/models/user.model';
 import { TransactionsFormStateService } from '@modules/transactions/services/transactions-form-state.service';
+import { USER_KEY } from '@modules/user/constants/local-storage.constants';
 import { TransactionsService } from '../../services/transactions.service';
 import { TransactionTypeEnum } from '../../enums/transaction-type.enum';
 import { ITransaction } from '../../models/transaction.model';
@@ -41,11 +42,11 @@ export class TransactionsFormComponent implements OnInit {
     private localStorageService: LocalStorageService<IAuth>,
     private userService: UserService,
     private transactionService: TransactionsService,
-    private trasactionFormState: TransactionsFormStateService,
+    private transactionFormState: TransactionsFormStateService,
     private snackBar: MatSnackBar,
     private router: Router,
   ) {
-    this.user = jwtDecode(this.localStorageService.getItem('user')?.access_token ?? '') as IDecodedUser;
+    this.user = jwtDecode(this.localStorageService.getItem(USER_KEY)?.access_token ?? '') as IDecodedUser;
   }
 
   public ngOnInit(): void {
@@ -64,7 +65,7 @@ export class TransactionsFormComponent implements OnInit {
 
     this.transactionService.createTransaction(payload).subscribe({
       next: transaction => {
-        this.trasactionFormState.setCreateTransactionResponseState(transaction);
+        this.transactionFormState.setCreateTransactionResponseState(transaction);
         this.router.navigate(['transactions', 'result']);
       },
       error: () => {
