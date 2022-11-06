@@ -41,6 +41,8 @@ export class UserService {
   async findOne(id: string) {
     const user = await this.userRepository.findOneBy({ id });
 
+    if (!user) return null;
+
     const account = await this.bankAccountService.findOneByUserId(user.id);
 
     return {
@@ -50,7 +52,7 @@ export class UserService {
     };
   }
 
-  findOneByEmail(email: string) {
+  async findOneByEmail(email: string) {
     return this.userRepository.findOneBy({ email });
   }
 }

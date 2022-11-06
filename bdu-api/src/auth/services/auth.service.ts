@@ -27,7 +27,7 @@ export class AuthService {
     return null;
   }
 
-  public async login(user: User): Promise<JwtAccessToken> {
+  public async login(user: Partial<User>): Promise<JwtAccessToken> {
     const payload = {
       name: user.name,
       email: user.email,

@@ -6,6 +6,7 @@ import { IAuth } from '@core/models/auth.model';
 
 import { AuthService } from '@core/services/auth.service';
 import { LocalStorageService } from '@core/services/local-storage.service';
+import { USER_KEY } from '@modules/user/constants/local-storage.constants';
 import { IUser } from '../../models/user.model';
 
 @Component({
@@ -33,7 +34,7 @@ export class LoginComponent {
 
     this.authService.login(this.formGroup.value as IUser).subscribe({
       next: login => {
-        this.localStorageService.setItem({ data: login, key: 'user' });
+        this.localStorageService.setItem({ data: login, key: USER_KEY });
         this.router.navigate(['/dashboard']);
       },
       error: () => {
