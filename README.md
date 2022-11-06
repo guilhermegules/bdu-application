@@ -12,12 +12,12 @@ docker-compose --build up
 
 <span>
   <a href="https://github.com/guilhermegules">
-    <img src="https://github.com/guilhermegules.png" width="50">
+    <img src="https://github.com/guilhermegules.png" width="70">
   </a>
   <a href="https://github.com/LuannCarvalho">
-    <img src="https://github.com/LuannCarvalho.png" width="50">
+    <img src="https://github.com/LuannCarvalho.png" width="70">
   </a>
   <a href="https://github.com/thaianealves">
-    <img src="https://github.com/thaianealves.png" width="50">
+    <img src="https://github.com/thaianealves.png" width="70">
   </a>
 </div>
