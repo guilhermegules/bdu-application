@@ -24,16 +24,13 @@ export class UserService {
 
     await this.userRepository.insert(user);
 
-    const account = await this.bankAccountService.create({
+    await this.bankAccountService.create({
       balance: 0,
       userId: user.id,
     });
 
-    await this.bankAccountService.create(account);
-
     return {
-      user,
-      account,
+      ...user,
     };
   }
 
