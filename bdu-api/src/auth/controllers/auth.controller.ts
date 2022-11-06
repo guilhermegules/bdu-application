@@ -1,4 +1,10 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  HttpException,
+  HttpStatus,
+  Post,
+} from '@nestjs/common';
 
 import { Public } from './../../core/constants/public.constants';
 import { AuthService } from '../services/auth.service';
@@ -10,7 +16,18 @@ export class AuthController {
 
   @Public()
   @Post('/login')
-  public login(@Body() user: User) {
-    return this.authService.login(user);
+  public async login(@Body() user: User) {
+    const validUser = await this.authService.validateUser(
+      user.email,
+      user.password,
+    );
+
+    if (!validUser)
+      throw new HttpException(
+        `User with email "${user.email}" was not found`,
+        HttpStatus.NOT_FOUND,
+      );
+
+    return this.authService.login(validUser);
   }
 }
