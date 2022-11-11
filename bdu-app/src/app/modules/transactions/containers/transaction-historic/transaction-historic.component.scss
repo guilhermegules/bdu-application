@@ -1,0 +1,14 @@
+:host {
+  .transaction-historic {
+    padding: 24px;
+    display: flex;
+
+    ::ng-deep .transaction-side-nav {
+      padding: 24px 24px 0 0;
+    }
+
+    mat-tab-group {
+      width: 100%;
+    }
+  }
+}

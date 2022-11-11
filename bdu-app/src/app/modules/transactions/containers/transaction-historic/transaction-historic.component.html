@@ -1,0 +1,20 @@
+<section class="transaction-historic">
+  <app-transactions-side-nav></app-transactions-side-nav>
+
+  <mat-tab-group>
+    <mat-tab label="Recebidas">
+      <app-table
+        [dataSource]="historic.receiverTransactions"
+        [displayedColumns]="RECEIVER_LIST_DISPLAYED_COLUMNS"
+        [headerData]="RECEIVER_LIST_HEADER"
+      ></app-table>
+    </mat-tab>
+    <mat-tab label="Realizadas">
+      <app-table
+        [dataSource]="historic.receiverTransactions"
+        [displayedColumns]="SENDER_LIST_DISPLAYED_COLUMNS"
+        [headerData]="SENDER_LIST_HEADER"
+      ></app-table>
+    </mat-tab>
+  </mat-tab-group>
+</section>
