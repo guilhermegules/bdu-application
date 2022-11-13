@@ -26,7 +26,7 @@ const routes: Routes = [
       {
         path: 'historic',
         component: TransactionHistoricComponent,
-        // canActivate: [AuthGuard],
+        canActivate: [AuthGuard],
       },
     ],
   },
