@@ -3,7 +3,7 @@ import { environment } from '@environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { ICreateTransactionResponse, ITransaction } from '../models/transaction.model';
+import { ICreateTransactionResponse, ITransaction, ITransactionHistoric } from '../models/transaction.model';
 
 @Injectable({
   providedIn: 'root',
@@ -13,5 +13,9 @@ export class TransactionsService {
 
   public createTransaction(payload: ITransaction): Observable<ICreateTransactionResponse> {
     return this.http.post<ICreateTransactionResponse>(`${environment.BASE_URL}/transaction`, payload);
+  }
+
+  public getHistoric(accountNumber: string): Observable<ITransactionHistoric> {
+    return this.http.get<ITransactionHistoric>(`${environment.BASE_URL}/transaction/all/${accountNumber}`);
   }
 }
