@@ -11,7 +11,7 @@
     </mat-tab>
     <mat-tab label="Realizadas">
       <app-table
-        [dataSource]="historic.receiverTransactions"
+        [dataSource]="historic.senderTransactions"
         [displayedColumns]="SENDER_LIST_DISPLAYED_COLUMNS"
         [headerData]="SENDER_LIST_HEADER"
       ></app-table>

@@ -1,4 +1,4 @@
-<table *ngIf="!!dataSource.length" mat-table [dataSource]="dataSource" class="mat-elevation-z8 table">
+<table *ngIf="!!dataSource.length; else emptyTable" mat-table [dataSource]="dataSource" class="mat-elevation-z8 table">
   <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
     <th mat-header-cell *matHeaderCellDef>{{ headerData[column] }}</th>
     <td mat-cell *matCellDef="let element">{{ element[column] }}</td>
@@ -6,3 +6,9 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
+
+<ng-template #emptyTable>
+  <div class="table--empty">
+    <h2>Nenhum dado para ser demonstrado</h2>
+  </div>
+</ng-template>

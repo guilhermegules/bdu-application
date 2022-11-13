@@ -18,7 +18,7 @@ export class TransactionHistoricComponent implements OnInit {
 
   public readonly RECEIVER_LIST_DISPLAYED_COLUMNS = ['transactionAmount', 'transactionSender', 'transactionType'];
 
-  public readonly SENDER_LIST_DISPLAYED_COLUMNS = ['transactionAmount', 'transactionType'];
+  public readonly SENDER_LIST_DISPLAYED_COLUMNS = ['transactionAmount', 'transactionReceiver', 'transactionType'];
 
   public readonly RECEIVER_LIST_HEADER = {
     transactionAmount: 'Valor recebido',
@@ -28,6 +28,7 @@ export class TransactionHistoricComponent implements OnInit {
 
   public readonly SENDER_LIST_HEADER = {
     transactionAmount: 'Valor enviado',
+    transactionReceiver: 'Beneficiário',
     transactionType: 'Tipo da transação',
   };
 

@@ -1,3 +1,14 @@
 .table {
   width: 100%;
+
+  &--empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    h2 {
+      margin: 16px 0;
+    }
+  }
 }
