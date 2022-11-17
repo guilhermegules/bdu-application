@@ -18,4 +18,7 @@ export class TableComponent {
 
   @Input()
   public displayedColumns: string[] = [];
+
+  @Input()
+  public formatters: Record<string, (row: string | number) => string> = {};
 }

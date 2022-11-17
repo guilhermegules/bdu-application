@@ -18,10 +18,12 @@
               prefix="R$ "
               [allowNegativeNumbers]="false"
             />
+            <mat-error *ngIf="form.get('amount')?.hasError('min')"> Insira um valor válido </mat-error>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Para quem você deseja transferir?</mat-label>
             <input matInput placeholder="00000-00" [maxLength]="17" formControlName="transactionReceiver" />
+            <mat-error *ngIf="form.get('transactionReceiver')?.hasError('required')"> Campo obrigatório </mat-error>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Método de transferência</mat-label>
