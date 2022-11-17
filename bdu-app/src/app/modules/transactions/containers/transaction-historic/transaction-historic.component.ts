@@ -6,6 +6,7 @@ import { switchMap } from 'rxjs';
 import { USER_KEY } from '@modules/user/constants/local-storage.constants';
 import { IAuth, IDecodedUser } from '@core/models/auth.model';
 import { ITransactionHistoric } from '@modules/transactions/models/transaction.model';
+import { formatNumber } from '@core/functions/number.functions';
 import { TransactionsService } from '../../services/transactions.service';
 
 @Component({
@@ -30,6 +31,10 @@ export class TransactionHistoricComponent implements OnInit {
     transactionAmount: 'Valor enviado',
     transactionReceiver: 'Beneficiário',
     transactionType: 'Tipo da transação',
+  };
+
+  public readonly FORMATTERS = {
+    transactionAmount: (row: string | number) => formatNumber(Number(row)),
   };
 
   constructor(

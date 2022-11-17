@@ -23,7 +23,7 @@ import { ITransaction } from '../../models/transaction.model';
 })
 export class TransactionsFormComponent implements OnInit {
   public form = this.fb.group({
-    amount: [0, Validators.required],
+    amount: [0, [Validators.required, Validators.min(1)]],
     transactionReceiver: ['', Validators.required],
     type: [TransactionTypeEnum.TED, Validators.required],
   });

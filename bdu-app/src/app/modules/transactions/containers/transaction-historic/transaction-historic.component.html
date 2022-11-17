@@ -7,6 +7,7 @@
         [dataSource]="historic.receiverTransactions"
         [displayedColumns]="RECEIVER_LIST_DISPLAYED_COLUMNS"
         [headerData]="RECEIVER_LIST_HEADER"
+        [formatters]="FORMATTERS"
       ></app-table>
     </mat-tab>
     <mat-tab label="Realizadas">
@@ -14,6 +15,7 @@
         [dataSource]="historic.senderTransactions"
         [displayedColumns]="SENDER_LIST_DISPLAYED_COLUMNS"
         [headerData]="SENDER_LIST_HEADER"
+        [formatters]="FORMATTERS"
       ></app-table>
     </mat-tab>
   </mat-tab-group>
