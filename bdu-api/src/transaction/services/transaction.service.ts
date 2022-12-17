@@ -49,6 +49,10 @@ export class TransactionService {
       );
     }
 
+    if (senderAccount.accountNumber === receiverAccount.accountNumber) {
+      throw new BusinessException('The sender cannot be equal to receiver');
+    }
+
     if (senderAccount.balance - createTransactionDto.amount < 0) {
       throw new BusinessException(
         'Sender account balance cannot be less than zero',
